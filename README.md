@@ -10,6 +10,8 @@
 
 2. [Installation](#installation)
 
+3. [Features](#features)
+
 ## Overview
 
 So I needed something to help me during CTF and stuff to visualize nmap scans. I decided to create one ^.^
@@ -45,3 +47,11 @@ docker build -t network-visualizer . && docker run -p 5000:5000 network-vizualiz
 > Building the container might take a while because I use an Ubuntu 16.04 image as base, which will then update itself and install Flask
 
 You should be able to go to `http://localhost:5000` and see the app.
+
+## Features
+
+[X] Render a graph from a JSON file
+[X] File upload on the container
+[ ] Auto load the uploaded file to render
+[ ] Parsing XML to JSON
+
