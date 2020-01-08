@@ -14,10 +14,22 @@ def reload(request):
 def redirect_root():
     return url_for("start")
 
+def uploaded_file():
+    if os.path.isfile("uploads/uploaded.xml"):
+        return True
+    else:
+        return False
+
 @app.route("/", methods = ["GET", "POST"])
 def start():
     if request.method == "GET":
-        return render_template("index.html")
+        if uploaded_file() == True:
+            f_name = "uploaded file"
+        else:
+            f_name = "default sample"
+
+        return render_template("index.html", file=f_name)
+
     elif request.method == "POST":
         # Check if file is in POST params
         if "file" not in request.files:
@@ -34,4 +46,4 @@ def start():
             return reload(request)
 
 if __name__ == "__main__":
-    app.run(host = "0.0.0.0", port = 5000)
+    app.run(host = "0.0.0.0", port = 5000, debug = True)

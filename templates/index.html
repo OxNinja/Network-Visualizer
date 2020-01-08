@@ -8,7 +8,7 @@
     </head>
     <body>
         <div id="chartdiv"></div>
-        <span class="note">Using <b>default template</b></span>
+        <span class="note">Using <b>{{ file }}</b></span>
 
         <form method="post" enctype="multipart/form-data">
             <div>
@@ -19,6 +19,7 @@
         </form>
 
         {% include "dependencies.html" %}
+
         <script src="{{ url_for('static', filename='js/chart.js') }}"></script>
     </body>
 </html>
