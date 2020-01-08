@@ -1,0 +1,11 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#chartdiv
+{
+    width: 90vw;
+    height: 70vh;
+    margin: auto;
+}

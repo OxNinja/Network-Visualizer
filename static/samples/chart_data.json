@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "name": "Host: 10.0.0.1",
+      "children": [
+        { "name": "Apache :80", "value": 10 },
+        { "name": "SSH :22", "value": 10 }
+      ]
+    },
+    {
+      "name": "Host: 10.0.0.2",
+      "children": [
+        { "name": "GraphQL :3000", "value": 10 },
+        { "name": "FTP :23", "value": 10 },
+        { "name": "Flask :5000", "value": 10 }
+      ]
+    }
+  ]
+}
