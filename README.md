@@ -38,7 +38,7 @@ This is a dockerized Flask app which uses [amcharts](https://www.amcharts.com/) 
 
 ### Build and launch the docker container
 
-Go to the cloned repo : `cd Network-Vizualizer`
+Go to the cloned repo app folder : `cd Network-Visualizer/app`
 
 ```bash
 docker build -t network-visualizer . && docker run -p 5000:5000 network-vizualizer
