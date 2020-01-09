@@ -55,5 +55,5 @@ You should be able to go to `http://localhost:5000` and see the app.
 - [ ] Auto load the uploaded file to render
 - [ ] Parsing XML to JSON
 
-See the [projet's kanban](https://github.com/OxNinja/Network-Visualizer/projects/1) for more details.
+See the [project's kanban](https://github.com/OxNinja/Network-Visualizer/projects/1) for more details.
 
