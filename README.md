@@ -53,7 +53,7 @@ You should be able to go to `http://localhost:5000` and see the app.
 - [x] Render a graph from a JSON file
 - [x] File upload on the container
 - [ ] Auto load the uploaded file to render
-- [ ] Parsing XML to JSON
+- [x] Parsing XML to JSON
 
 See the [project's kanban](https://github.com/OxNinja/Network-Visualizer/projects/1) for more details.
 
