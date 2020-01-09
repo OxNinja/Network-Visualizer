@@ -9,6 +9,8 @@ from flask import Flask, render_template, redirect, request, url_for
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "uploads"
+app.config["DEFAULT_FILE"] = "default sample"
+app.config["UPLOADED_FILE"] = "uploaded file"
 
 # Common functions
 def reload(request):
@@ -27,9 +29,9 @@ def uploaded_file():
 def start():
     if request.method == "GET":
         if uploaded_file() == True:
-            f_name = "uploaded file"
+            f_name = app.config["UPLOADED_FILE"]
         else:
-            f_name = "default sample"
+            f_name = app.config["DEFAULT_FILE"]
 
         return render_template("index.html", file=f_name)
 

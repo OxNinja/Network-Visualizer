@@ -20,6 +20,10 @@
 
         {% include "dependencies.html" %}
 
-        <script src="{{ url_for('static', filename='js/chart.js') }}"></script>
+        {% if file == config["DEFAULT_FILE"] %}
+        <script src="{{ url_for('static', filename='js/default_chart.js') }}"></script>
+        {% else %}
+        <script src="{{ url_for('static', filename='js/custom_chart.js') }}"></script>
+        {% endif %}
     </body>
 </html>

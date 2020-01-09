@@ -29,7 +29,7 @@ networkSeries.dataFields.name = "name";
 networkSeries.dataFields.children = "children";
 networkSeries.nodes.template.tooltipText = "{name}";
 networkSeries.nodes.template.fillOpacity = 1;
-networkSeries.manyBodyStrength = -50;
+networkSeries.manyBodyStrength = -25;
 networkSeries.links.template.strength = 0.9;
 networkSeries.minRadius = am4core.percent(5);
 
