@@ -3,9 +3,63 @@
     margin: 0;
 }
 
+:root {
+    --primary: #197bbd;
+    --dark_blue: #061a40;
+    --light_blue: #63d2ff;
+    --white_blue: #c6e3ff;
+}
+
 #chartdiv
 {
-    width: 90vw;
+    width: 100vw;
     height: 70vh;
     margin: auto;
+    background-color: #252525;
+    box-shadow: 0 5px 15px #bbb;
+}
+
+.note
+{
+    display: block;
+    margin: 25px;
+    padding: 25px;
+    background: linear-gradient(-70deg, var(--white_blue), var(--light_blue));
+    border-left: 10px solid var(--primary);
+    border-radius: 10px;
+    width: 30%;
+    transition: .6s;
+}
+
+.note:hover
+{
+    box-shadow: 0 0 15px #bbb;
+}
+
+.note::before
+{
+    content: "Note : ";
+}
+
+form
+{
+    width: 50vw;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+form > input, form > div > label
+{
+    border: 3px solid var(--primary);
+    padding: 10px 22px;
+    background: linear-gradient(70deg, var(--light_blue), var(--white_blue));
+    color: black;
+    cursor: pointer;
+}
+
+form > div > input
+{
+    display: none;
 }
