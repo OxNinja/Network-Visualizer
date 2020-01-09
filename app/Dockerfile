@@ -6,6 +6,8 @@ LABEL   author="0xNinja" \
 
 RUN apt-get update -y && apt-get install -y python3-pip
 
+RUN rm -rf /app/*
+
 COPY ./requirements.txt /app/requirements.txt
 
 WORKDIR /app
