@@ -1,8 +1,8 @@
 # Network Visualizer
 
-> Work in progress !
+> :warning: Work in progress !
 
-:^)
+:relaxed:
 
 ## Summary
 
@@ -38,15 +38,13 @@ This is a dockerized Flask app which uses [amcharts](https://www.amcharts.com/) 
 
 ### Build and launch the docker container
 
-Go to the cloned repo app folder : `cd Network-Visualizer/app`
+Go to the cloned repo folder : `cd Network-Visualizer`
 
 ```bash
-docker build -t network-visualizer . && docker run -p 5000:5000 network-vizualizer
+docker-compose up --build
 ```
 
-> Building the container might take a while because I use an Ubuntu 16.04 image as base, which will then update itself and install Flask
-
-You should be able to go to `http://localhost:5000` and see the app.
+You should be able to go to `http://172.16.0.2:5000` and see the app.
 
 ## Features
 
