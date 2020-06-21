@@ -65,6 +65,7 @@ See the [project's kanban](https://github.com/OxNinja/Network-Visualizer/project
 
 1. Click on `Select an XML file to upload`
 2. Select you nmap output file
+
     `nmap host -oX /path/to/anywhere/file.xml` to create one.
     > If you don't have any, you can browse the repo `/src/app/static/samples` folder and select `nmap.xml`
 3. Click `Upload`
