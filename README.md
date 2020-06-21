@@ -12,6 +12,8 @@
 
 3. [Features](#features)
 
+4. [How to use](#how_to_use)
+
 ## Overview
 
 So I needed something to help me during CTF and stuff to visualize nmap scans. I decided to create one ^.^
@@ -58,4 +60,12 @@ You should be able to go to `http://172.16.0.2:5000` and see the app.
 - [x] Parsing XML to JSON
 
 See the [project's kanban](https://github.com/OxNinja/Network-Visualizer/projects/1) for more details.
+
+## How to use
+
+1. Click on `Select an XML file to upload`
+2. Select you nmap output file
+    > If you don't have, you can browse the repo `/src/app/static/samples` folder and select `nmap.xml`
+3. Click `Upload`
+4. Profit
 
