@@ -16,9 +16,13 @@
 
 So I needed something to help me during CTF and stuff to visualize nmap scans. I decided to create one ^.^
 
-![Overview of the app](overview.png)
+![Overview of the app](static/overview.png)
 
 This is a dockerized Flask app which uses [amcharts](https://www.amcharts.com/) (a JavaScript library) to render the graph.
+
+Here, an example of the application with a custom nmap XML output file :
+
+![Example](static/example.png)
 
 ## Installation
 
