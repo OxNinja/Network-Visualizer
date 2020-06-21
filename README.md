@@ -12,7 +12,7 @@
 
 3. [Features](#features)
 
-4. [How to use](#how_to_use)
+4. [How to use](#how-to-use)
 
 ## Overview
 
