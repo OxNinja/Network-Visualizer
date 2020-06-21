@@ -56,7 +56,7 @@ You should be able to go to `http://172.16.0.2:5000` and see the app.
 
 - [x] Render a graph from a JSON file
 - [x] File upload on the container
-- [ ] Auto load the uploaded file to render
+- [x] Auto load the uploaded file to render
 - [x] Parsing XML to JSON
 
 See the [project's kanban](https://github.com/OxNinja/Network-Visualizer/projects/1) for more details.
