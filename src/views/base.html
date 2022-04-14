@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello</title>
+  </head>
+  <body>
+    <style>
+      #chart {
+        width: 100%;
+        height: 550px;
+      }
+    </style>
+    <div id="chart"></div>
+
+    <script src="/js/index.js"></script>
+    <script src="/js/hierarchy.js"></script>
+    <script src="/js/Animated.js"></script>
+    <script>
+    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+    let chartData = null;
+
+    var send = async () => {
+      const headers = {
+        'Content-Type': 'application/json'
+      }
+
+      const body = {}
+
+      let request = await fetch("/scan", {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(body)
+      }).then((r) => {
+        return r.json();
+      });
+
+      return request;
+    }
+
+    (async () => {
+      chartData = await send();
+
+      data = {
+        name: "Root",
+        value: 0,
+        children: chartData
+      };
+
+      console.log(chartData);
+      console.log(data);
+
+      // Start of chart stuff
+      am5.ready(() => {
+        let root = am5.Root.new("chart");
+        root.setThemes([
+          am5themes_Animated.new(root)
+        ]);
+
+        // Create wrapper container
+        var container = root.container.children.push(
+          am5.Container.new(root, {
+            width: am5.percent(100),
+            height: am5.percent(100),
+            layout: root.verticalLayout
+          })
+        );
+
+        // Create series
+        var series = container.children.push(
+          am5hierarchy.ForceDirected.new(root, {
+            singleBranchOnly: false,
+            downDepth: 1,
+            topDepth: 1,
+            maxRadius: 25,
+            minRadius: 12,
+            valueField: "value",
+            categoryField: "name",
+            childDataField: "children",
+            idField: "name",
+            linkWithStrength: 0.3,
+            linkWithField: "linkWith",
+            manyBodyStrength: -15,
+            centerStrength: 0.5
+          })
+        );
+
+        series.get("colors").set("step", 2);
+
+        series.data.setAll([data]);
+        series.set("selectedDataItem", series.dataItems[0]);
+
+        // Make stuff animate on load
+        series.appear(1000, 100);
+      });
+    })();
+
+
+    </script>
+  </body>
+</html>
