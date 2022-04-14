@@ -12,6 +12,11 @@
     </style>
     <div id="chart"></div>
 
+    <form>
+      <input type="text" name="target" value="" placeholder="127.0.0.1">
+      <input type="submit" name="submit" value="Scan">
+    </form>
+
     <script src="/js/index.js"></script>
     <script src="/js/hierarchy.js"></script>
     <script src="/js/Animated.js"></script>
@@ -42,8 +47,8 @@
       chartData = await send();
 
       data = {
-        name: "Root",
-        value: 0,
+        name: "Network",
+        value: 4,
         children: chartData
       };
 
@@ -67,23 +72,14 @@
         );
 
         // Create series
-        var series = container.children.push(
-          am5hierarchy.ForceDirected.new(root, {
-            singleBranchOnly: false,
-            downDepth: 1,
-            topDepth: 1,
-            maxRadius: 25,
-            minRadius: 12,
-            valueField: "value",
-            categoryField: "name",
-            childDataField: "children",
-            idField: "name",
-            linkWithStrength: 0.3,
-            linkWithField: "linkWith",
-            manyBodyStrength: -15,
-            centerStrength: 0.5
-          })
-        );
+        var series = container.children.push(am5hierarchy.Tree.new(root, {
+          singleBranchOnly: false,
+          downDepth: 1,
+          initialDepth: 10,
+          valueField: "value",
+          categoryField: "name",
+          childDataField: "children"
+        }));
 
         series.get("colors").set("step", 2);
 

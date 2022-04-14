@@ -89,20 +89,14 @@ app.post("/scan", asyncMiddleware(async (req, res, next) => {
     for(let port in services) {
       let child = {};
       let service = services[port];
-      console.log(service);
       data[host]["children"][port] = {};
       let portid = service["item"]["portid"];
       child["name"] = `${portid}`;
-      if(service["service"]) {
-        let serviceName = service["service"][0]["item"]["name"];
-        child["name"] = `${portid} ${serviceName}`;
-      }
       child["value"] = 1;
       data[host]["children"][port] = child;
     }
   }
 
-  console.log(data);
   res.send(data);
 }));
 
