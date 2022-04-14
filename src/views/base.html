@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Network visualizer</title>
+  </head>
+  <body>
+    <style>
+      #chart {
+        width: 100%;
+        height: 550px;
+      }
+    </style>
+    <div id="chart"></div>
+
+    <input type="text" id="target" value="" placeholder="127.0.0.1">
+    <button onclick="scanTarget()">Scan</button>
+
+    <footer>
+      By 0xNinja
+    </footer>
+
+    <script src="/js/index.js"></script>
+    <script src="/js/hierarchy.js"></script>
+    <script src="/js/Animated.js"></script>
+    <script>
+    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+    let chartData = null;
+
+    const send = async (data) => {
+      const headers = {
+        'Content-Type': 'application/json'
+      }
+
+      const body = {
+        target: data
+      }
+
+      let request = await fetch("/scan", {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(body)
+      }).then((r) => {
+        return r.json();
+      });
+
+      return request;
+    }
+
+    const scanTarget = async () => {
+      let target = document.getElementById("target").value;
+      console.log(target);
+      chartData = await send(target);
+
+      data = {
+        name: "Network",
+        value: 4,
+        children: chartData
+      };
+
+      // Start of chart stuff
+      am5.ready(() => {
+        let root = am5.Root.new("chart");
+        root.setThemes([
+          am5themes_Animated.new(root)
+        ]);
+
+        // Create wrapper container
+        var container = root.container.children.push(
+          am5.Container.new(root, {
+            width: am5.percent(100),
+            height: am5.percent(100),
+            layout: root.verticalLayout
+          })
+        );
+
+        // Create series
+        var series = container.children.push(am5hierarchy.Tree.new(root, {
+          singleBranchOnly: false,
+          downDepth: 1,
+          initialDepth: 10,
+          valueField: "value",
+          categoryField: "name",
+          childDataField: "children"
+        }));
+
+        series.get("colors").set("step", 2);
+
+        series.data.setAll([data]);
+        series.set("selectedDataItem", series.dataItems[0]);
+
+        // Make stuff animate on load
+        series.appear(1000, 100);
+      });
+    };
+    </script>
+  </body>
+</html>
