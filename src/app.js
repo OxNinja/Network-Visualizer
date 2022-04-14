@@ -10,40 +10,9 @@ const asyncMiddleware = fn =>
   Promise.resolve(fn(req, res, next)).catch(next);
 };
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-// let data = {
-//   name: "network",
-//   value: 0,
-//   children: [
-//     {
-//       name: "host",
-//       children: [
-//         { name: "port service", value: 1 },
-//         { name: "port service", value: 1 },
-//       ]
-//     },
-//   ]
-// };
-
-
-// for(let host in report) {
-//   let ip = report[host]["host"][0]["address"][0]["item"]["addr"];
-//   data["children"][host]["name"] = ip;
-//
-//   let ports = report[host]["host"][0]["ports"][0]["port"];
-//   console.log(ports);
-//   for(let p in ports) {
-//     let child = data["children"][host]["children"][p];
-//     port = ports[p];
-//     if(port["service"]) {
-//       portid = port["item"]["portid"];
-//       service = port["service"][0]["item"]["name"];
-//       child["name"] = `${portid} ${service}`;
-//       data["children"][host]["children"][p] = child;
-//     }
-//   }
-// }
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "base.html"));
@@ -52,10 +21,9 @@ app.get("/", (req, res) => {
 
 app.post("/scan", asyncMiddleware(async (req, res, next) => {
   // Parse args for custom scan
-
   const scanOptions = {
     range: [
-      "localhost"
+      req.body.target
     ],
     ports: "0-10000"
   };
